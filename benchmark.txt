@@ -1,0 +1,6 @@
+dotnet D:\git-projects\rabbitmq\WorkQueues\Worker1\bin\Debug\netcoreapp2.2\Worker1.dll
+
+1 worker : 2:55 min
+3 workers : 3:04 min
+1 worker (multi tasks) : 1:40 min
+1 worker (mono task): 1:30 min
