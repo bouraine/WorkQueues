@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
+using MassTransit;
+using Messages;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiWorker.Controllers
@@ -13,10 +11,12 @@ namespace WebApiWorker.Controllers
     public class ValuesController : ControllerBase
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly IBus _bus;
 
-        public ValuesController(IHttpClientFactory clientFactory)
+        public ValuesController(IHttpClientFactory clientFactory, IBus bus)
         {
             _clientFactory = clientFactory;
+            _bus = bus;
         }
 
         [HttpGet]
@@ -26,6 +26,11 @@ namespace WebApiWorker.Controllers
             var client = _clientFactory.CreateClient("pokemon");
             var response = await client.SendAsync(request);
             return Ok(await response.Content.ReadAsAsync<dynamic>());
+        }
+
+        public async void SendMessage()
+        {
+            await _bus.Publish(new TextMessage {Text = "hello world"});
         }
     }
 }
