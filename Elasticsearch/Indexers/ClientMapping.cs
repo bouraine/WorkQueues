@@ -5,7 +5,6 @@ internal static class ClientMapping
     public static ITypeMapping Mapping(TypeMappingDescriptor<Client> mapping) => mapping
         .AutoMap()
         .Properties<Client>(p => p
-            .Text(t => t.Name(client => client.Name))
             .Keyword(t => t.Name(client => client.Name))
             .Keyword(t => t.Name(client => client.Level))
             .Object<Sales>(o => o

@@ -37,7 +37,7 @@ namespace AspNetCoreWorker
             return Task.CompletedTask;
         }
 
-        private async Task OnIndexClientsReceived(string arg) => await _clientIndexer.IndexClients();
+        private async Task OnIndexClientsReceived(string arg) => await _clientIndexer.IndexClient();
 
 
         private async Task OnBulkIndexReceived(BulkIndexPeople msg)

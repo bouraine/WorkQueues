@@ -47,7 +47,7 @@ namespace Elasticsearch.Indexers
             await _esClient.UpdateAsync<T, TPartial>(id, u => u.Doc(partialDocument));
         }
         
-        public async Task IndexDocument(T document, string id)
+        public async Task IndexDocument(T document)
         {
             await _esClient.IndexAsync(document, d => d.Id(document.Id));
         }

@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Domain;
+using Nest;
 
 
 // "ASSET FINANCING", "Private equity", "Angel investment","Wire transfer","Mutual Funds","CDS",
@@ -20,9 +23,10 @@ public class Sales
     public IEnumerable<string> Products { get; set; }
 }
 
+
 public static class ClientSeed
 {
-    public static readonly IEnumerable<Client> Data = new List<Client>
+    public static readonly IReadOnlyCollection<Client> Data = new List<Client>
     {
         new Client
         {
@@ -112,6 +116,20 @@ public static class ClientSeed
                     Revenue = 4,
                     Products = new[] {"CDS", "FINANCING", "Cash managment"}
                 }
+            }
+        }
+    };
+
+    public static readonly Client SingleClient = new Client
+    {
+        Id = "1" + DateTime.Now.ToFileTime(),
+        Level = "L2",
+        Name = "name",
+        Sales = new List<Sales>
+        {
+            new Sales
+            {
+                Firstname = "firstname" + DateTime.Now.ToFileTime()
             }
         }
     };
