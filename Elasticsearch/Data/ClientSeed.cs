@@ -16,7 +16,7 @@ public class Sales
 {
     public string Firstname { get; set; }
     public string Lastname { get; set; }
-    public string Revenue { get; set; }
+    public int Revenue { get; set; }
     public IEnumerable<string> Products { get; set; }
 }
 
@@ -34,7 +34,7 @@ public static class ClientSeed
                 {
                     Firstname = "Amber",
                     Lastname = "Duke",
-                    Revenue = "1",
+                    Revenue = 1,
                     Products = new[] {"CDS", "CDO", "Export Financing"}
                 }
             }
@@ -49,7 +49,7 @@ public static class ClientSeed
                 {
                     Firstname = "Hattie",
                     Lastname = "Bond",
-                    Revenue = "1",
+                    Revenue = 1,
                     Products = new[] {"ASSET FINANCING", "Private equity", "Angel investment"}
                 }
             }
@@ -64,7 +64,7 @@ public static class ClientSeed
                 {
                     Firstname = "Nanette",
                     Lastname = "Bates",
-                    Revenue = "3",
+                    Revenue = 3,
                     Products = new[] {"Private equity", "Angel investment", "Wire transfer", "CDO"}
                 }
             }
@@ -79,7 +79,7 @@ public static class ClientSeed
                 {
                     Firstname = "Dale",
                     Lastname = "Adams",
-                    Revenue = "3",
+                    Revenue = 3,
                     Products = new[] {"CDS", "CDO", "Wire transfer"}
                 }
             }
@@ -92,10 +92,10 @@ public static class ClientSeed
             {
                 new Sales
                 {
-                    Firstname = "Elinor",
-                    Lastname = "Ratliff",
-                    Revenue = "5",
-                    Products = new[] {"CDS", "ASSET FINANCING", "Cash managment"}
+                    Firstname = "Elinor 2",
+                    Lastname = "Ratliff 2",
+                    Revenue = 5,
+                    Products = new[] {"CDS", "ASSET FINANCING", "Cash managment 2"}
                 }
             }
         },
@@ -109,7 +109,7 @@ public static class ClientSeed
                 {
                     Firstname = "P1",
                     Lastname = "L2",
-                    Revenue = "4",
+                    Revenue = 4,
                     Products = new[] {"CDS", "FINANCING", "Cash managment"}
                 }
             }

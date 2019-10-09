@@ -27,7 +27,7 @@ namespace Elasticsearch.EsExtensions
             services.AddSingleton(s => new DocumentIndexer<Client>(
                 s.GetService<IElasticClient>(),
                 s.GetService<IndexRotator>(),
-                "client2"
+                "client"
             ));
             services.AddSingleton(s => new IndexRotator(
                 s.GetService<IElasticClient>(),

@@ -41,7 +41,6 @@ namespace Elasticsearch.Indexers
             _esClient.Indices.PutAlias(indexName, aliasName);
         }
 
-
         /// <summary>
         /// Create et get (if exists) a secondary index named aliasName-prefix different from the primary index.
         /// </summary>
@@ -123,7 +122,7 @@ namespace Elasticsearch.Indexers
             var newIndexName = currentIndex.Equals(v1) ? v2 : v1;
             return newIndexName;
         }
-        
+
         private bool AliasExists(string aliasName) => _esClient.Indices.AliasExists(aliasName).Exists;
 
         private bool IndexExists(string indexName) => _esClient.Indices.Exists(indexName).Exists;

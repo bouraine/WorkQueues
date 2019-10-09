@@ -11,9 +11,18 @@ internal static class ClientMapping
             .Object<Sales>(o => o
                 .Name(client => client.Sales)
                 .Properties(pr => pr
-                    .Keyword(k => k.Name(n => n.Lastname))
+                    .Text(k => k
+                        .Name(n => n.Lastname)
+                        .Fields(f => f
+                            .Keyword(fk => fk.Name(n => n.Lastname))
+                            .Text(fk => fk
+                                .Name("lastname_txt")
+                                .Analyzer("standard")
+                            )
+                        )
+                    )
                     .Keyword(k => k.Name(n => n.Firstname))
-                    .Keyword(k => k.Name(n => n.Revenue))
+                    .Number(k => k.Name(n => n.Revenue))
                     .Keyword(k => k.Name(sales => sales.Products))
                 )
             )
