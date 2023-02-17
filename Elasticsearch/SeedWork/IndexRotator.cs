@@ -6,9 +6,10 @@ using Nest;
 namespace Elasticsearch.Indexers
 {
     /// <summary>
-    /// Provide a mecanisme to rotate indices with no downtime by using an alias and two indices.
-    /// The primary index is the current index which serves user's requests.
-    /// The secondary index is a temporary index used for heavy index operations.
+    /// Provides a mecanisme to rotate indices (by using an alias and two indices) to ensure no downtime while performing heavy write operations.
+    /// 
+    /// The operations are done on the secondary index while the primary index continue to serve user's requests,
+    /// when the work is done, we point the alias to the secondary index and delete the primary one.
     /// </summary>
     public class IndexRotator
     {
@@ -22,7 +23,7 @@ namespace Elasticsearch.Indexers
         }
 
         /// <summary>
-        /// Initializes a rotating index by creating an index named [alias-prefix] and an alias pointing to that index.
+        /// Initializes a rotating index by creating an index named [alias]-[prefix] and an alias pointing to that index.
         /// Clean all indices named [alias-prefix].
         /// Do nothing if alias already exists
         /// </summary>
