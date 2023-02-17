@@ -8,9 +8,7 @@ namespace Elasticsearch.Indexers
     /// <summary>
     /// Provide a mecanisme to rotate indices with no downtime by using an alias and two indices.
     /// The primary index is the current index which serves user's requests.
-    /// The secondary index is a temporary index to use for heavy index operations.
-    /// While the operations finished you switch the alias to point to the new created index.
-    /// zda
+    /// The secondary index is a temporary index used for heavy index operations.
     /// </summary>
     public class IndexRotator
     {
@@ -24,9 +22,8 @@ namespace Elasticsearch.Indexers
         }
 
         /// <summary>
-        /// Initialize if not exists a rotating index by
-        /// creating an index named alias-prefix and an alias pointing to that index.
-        /// Clean all indices named alias-prefix.
+        /// Initializes a rotating index by creating an index named [alias-prefix] and an alias pointing to that index.
+        /// Clean all indices named [alias-prefix].
         /// Do nothing if alias already exists
         /// </summary>
         /// <param name="aliasName">Alias name</param>
@@ -42,7 +39,7 @@ namespace Elasticsearch.Indexers
         }
 
         /// <summary>
-        /// Create et get (if exists) a secondary index named aliasName-prefix different from the primary index.
+        /// Returns a secondary index named [aliasName]-[prefix] different from the primary index.
         /// </summary>
         /// <param name="aliasName">Alias name </param>
         /// <param name="mapper">Index mapping settings</param>
@@ -60,7 +57,7 @@ namespace Elasticsearch.Indexers
         }
 
         /// <summary>
-        /// Point aliasName to the secondary index and remove the alias from primary index
+        /// Points [aliasName] to the secondary index and removes the alias from the primary index
         /// </summary>
         /// <param name="aliasName">Alias name</param>
         /// <returns>Secondary index name</returns>
@@ -78,9 +75,9 @@ namespace Elasticsearch.Indexers
         }
 
         /// <summary>
-        /// Clear primary and secondary indices
+        /// Clears the primary and secondary indices
         /// </summary>
-        /// <param name="indexPrefix"></param>
+        /// <param name="indexPrefix">the names of the primary and secondary indices </param>
         public void ClearAlias((string, string) indexPrefix)
         {
             var (primary, secondary) = indexPrefix;
@@ -89,7 +86,7 @@ namespace Elasticsearch.Indexers
         }
 
         /// <summary>
-        /// Create a new index
+        /// Creates a new index
         /// </summary>
         /// <param name="indexName">Index name</param>
         /// <param name="mapper">IndexMapping settings</param>
@@ -103,7 +100,7 @@ namespace Elasticsearch.Indexers
         }
 
         /// <summary>
-        /// Get the primary index name
+        /// Gets the primary index name
         /// </summary>
         /// <param name="aliasName">Alias name</param>
         /// <returns>Primary index name</returns>
